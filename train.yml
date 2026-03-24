@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task3b-deployment
+  name: train-deployment
   labels:
-    app: task3b
+    app: train
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: task3b
+      app: train
   template:
     metadata:
       labels:
-        app: task3b
+        app: train
     spec:
       containers:
-        - name: task3b-cont
+        - name: train-cont
           image: kondavenkat035/train:latest
           ports:
             - containerPort: 8080
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: task3b-node-service
+  name: train-service
 spec:
   selector:
-    app: task3b
+    app: train
   ports:
     - protocol: TCP
       port: 8080
