@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task3a-deployment
+  name: hotel-deployment
   labels:
-    app: task3a
+    app: hotel
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: task3a
+      app: hotel
   template:
     metadata:
       labels:
-        app: task3a
+        app: hotel
     spec:
       containers:
-        - name: task3a-cont
+        - name: hotel-cont
           image: kondavenkat035/hotal:latest
           ports:
             - containerPort: 8080
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: task3a-cluster-service
+  name: hotel-service
 spec:
   selector:
-    app: task3a
+    app: hotel
   ports:
     - protocol: TCP
       port: 8080
